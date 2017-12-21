@@ -12,7 +12,7 @@ public class City extends DataSupport {
 
     private String cityName;
 
-    private String cideCode;
+    private int cityCode;
 
     private int provinceId;
 
@@ -32,12 +32,12 @@ public class City extends DataSupport {
         this.cityName = cityName;
     }
 
-    public String getCideCode() {
-        return cideCode;
+    public int getCityCode() {
+        return cityCode;
     }
 
-    public void setCideCode(String cideCode) {
-        this.cideCode = cideCode;
+    public void setCityCode(int cityCode) {
+        this.cityCode = cityCode;
     }
 
     public int getProvinceId() {

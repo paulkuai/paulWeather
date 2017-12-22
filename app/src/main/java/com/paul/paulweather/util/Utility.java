@@ -2,9 +2,11 @@ package com.paul.paulweather.util;
 
 import android.text.TextUtils;
 
+import com.google.gson.Gson;
 import com.paul.paulweather.db.City;
 import com.paul.paulweather.db.County;
 import com.paul.paulweather.db.Province;
+import com.paul.paulweather.gson.Weather;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -92,6 +94,24 @@ public class Utility {
             return true;
         }
         return false;
+    }
+
+    /**
+     * 将返回的JSON数据解析成Weather实体类
+     * @param response
+     * @return
+     */
+    public static Weather handleWeatherResponse(String response){
+        try{
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather6");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weatherContent,Weather.class);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
